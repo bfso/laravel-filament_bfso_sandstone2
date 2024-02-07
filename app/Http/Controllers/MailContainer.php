@@ -10,7 +10,8 @@ class MailContainer extends Controller
 {
     public function sendMail()
     {
-       Mail::to("test@test.com")->send(new ActivitiesDue());
+       $name="bob";
+       Mail::to("test@test.com")->send(new ActivitiesDue($name));
        return "send Mail";
     }
 }
