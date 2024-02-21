@@ -15,13 +15,6 @@ E.g. `feature/#21-add-login-page`
 
 ## Commits
 ### Naming convention:
+`[commit-name] #[issue-id]`
 
-Feature: `feature(#[issue-id]): [commit-name]`
-
-Bugfix: `bugfix(#[issue-id]): [commit-name]`
-
-Hotfix: `hotfix(#[issue-id]): [commit-name]`
-
-Maintenance: `main(#[issue-id]): [commit-name]`
-
-E.g. `feature(#21): Add login page`
+E.g. `Add login page #21`
