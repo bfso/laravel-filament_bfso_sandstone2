@@ -77,8 +77,8 @@ class MailController extends Controller
                     $today = now()->toDateString();
                     $query
                         ->select('send_to')
-                        ->form('mails')
-                        ->where('DATE(sent_at)', '=', $today);
+                        ->from('mails')
+                        ->whereDate('sent_at', '=', $today);
                 }) 
                 ->select('users.*')
                 ->get();
