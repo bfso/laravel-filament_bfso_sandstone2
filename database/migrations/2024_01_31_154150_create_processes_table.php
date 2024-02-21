@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('creator')->references('id')->on('users');
             $table->foreignId('responsible')->references('id')->on('users');
             $table->foreignId('represented')->references('id')->on('users');
-  
+
             $table->integer('department')->references('id')->on('departments');
             $table->integer('categorie')->references('id')->on('categories');
             $table->integer('offset_days');
@@ -28,6 +28,7 @@ return new class extends Migration
             $table->integer('next')->references('id')->on('processes');
             $table->integer('previous')->references('id')->on('processes');
             $table->integer('parent')->references('id')->on('processes');
+            $table->timestamp('start_date')->nullable();
             $table->timestamps();
         });
     }
