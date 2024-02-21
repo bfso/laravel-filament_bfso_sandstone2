@@ -71,21 +71,26 @@ class MailController extends Controller
 
     public static function sendMail()
     {
-        // 
-        $today = now()->toDateString();
-        
-        // 
+        // get all Users
         $users = DB::table('users')
                 ->whereNotIn('users.id', function($query){
-                    $query->select('send_to')->form('user');
+                    $today = now()->toDateString();
+                    $query
+                        ->select('send_to')
+                        ->form('mails')
+                        ->where('DATE(sent_at)', '=', $today);
                 }) 
                 ->select('users.*')
                 ->get();
 
 
-        
-       $name="bob";
-       Mail::to("test@test.com")->send(new ActivitiesDue($name));
+        // send Mails
+        foreach($users as $user){
+            $username = $user->name;
+            $email = $user->email;
+            Mail::to($email)->send(new ActivitiesDue($username));
+        }
+
        return "send Mail";
     }
 }
