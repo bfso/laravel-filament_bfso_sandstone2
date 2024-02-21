@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('title');
-            $table->string('description');
-            $table->string('role');
+            $table->text('description');
+            //$table->string('role');
             $table->timestamps();
         });
     }
