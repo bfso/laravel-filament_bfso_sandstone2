@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function ($table) {
 
-            $table->integer('department')->references('id')->on('departments');
+            $table->integer('department')->nullable()->references('id')->on('departments');
         });
     }
 
