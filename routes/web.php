@@ -1,6 +1,11 @@
 <?php
 
+use App\Filament\Resources\TemplateResource;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ControllerTemplate;
+use Filament\Http\Controllers\CreateRecord;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::get('/template', [ControllerTemplate::class, 'form']);
+
+Route::get('/template', 'App\Http\Controllers\ControllerTemplate@show_form');
