@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Mail\ActivitiesDue;
-use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 
