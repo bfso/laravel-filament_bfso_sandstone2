@@ -26,6 +26,6 @@ class ControllerTemplate extends Controller
     public function show_form()
     {
         return TemplateResource::forms(new Form(new HasForms()));
-        
+
     }
 }
