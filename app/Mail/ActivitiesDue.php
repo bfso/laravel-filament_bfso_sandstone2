@@ -52,4 +52,15 @@ class ActivitiesDue extends Mailable
     {
         return [];
     }
+
+
+    /**
+     * build the message.
+     * 
+     * 
+     */
+    public function build()
+    {
+        return $this->view('mail.activitiesDue')->with($this->name);
+    }
 }
