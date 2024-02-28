@@ -56,8 +56,6 @@ class ActivitiesDue extends Mailable
 
     /**
      * build the message.
-     * 
-     * 
      */
     public function build()
     {
