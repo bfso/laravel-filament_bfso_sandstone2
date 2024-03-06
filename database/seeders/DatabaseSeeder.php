@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\deparment::create([
+        \App\Models\Department::create([
             'name' => 'asdf'
         ]);
 
@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'email'=>'admin@bfo.ch',
             'name'=>'admin@bfo.ch',
             'password'=>Hash::make('bfo12345'),
-            'department'=>1,
+            'department_id'=>1,
         ]);
     }
 }
