@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProcessResource\Pages;
 use App\Filament\Resources\ProcessResource\RelationManagers;
+use App\Models\Template;
 use App\Models\Process;
 use Filament\Forms;
 use Filament\Forms\Components\Placeholder;
@@ -27,18 +28,17 @@ class ProcessResource extends Resource
     {
         return $form
             ->schema([
-            //echo Form::select('size', array('L' => 'Large', 'S' => 'Small'));
-            Forms\Components\Section::make('Process')
-            ->schema([
-                Select::make('process')->options([
-                        'Template1' => 'Template1',
-                        'Template2' => 'Template2',
-                    ])
+                //echo Form::select('size', array('L' => 'Large', 'S' => 'Small'));
+                Forms\Components\Section::make('Process')
+                ->schema([
+                    Select::make('process')->label(__('Template'))->required()->searchable()
+                    ->options(Template::orderBy('id', 'asc')->pluck('title', 'id')->toArray())
                     ->live(),
-                    Placeholder::make('title')
-                    ->content(function(Get $get){
-                        return $get('process');
-                    }),
+                ])->columns(4),
+                        Placeholder::make('title')
+                        ->content(function(Get $get){
+                            return $get('process');
+                        }),
                     Placeholder::make('date')
                     ->content(function(Get $get){
                         return $get('process');
@@ -63,8 +63,7 @@ class ProcessResource extends Resource
                     ->content(function(Get $get){
                         return $get('process');
                     }), 
-                ]),
-            ]);
+                ]);            
     }
 
     public static function table(Table $table): Table
