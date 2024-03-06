@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'asdf'
         ]);
 
-        $user = \App\Models\User::create([
+        $user = user::create([
             'email'=>'admin@bfo.ch',
             'name'=>'admin@bfo.ch',
             'password'=>Hash::make('bfo12345'),

@@ -6,8 +6,11 @@ use App\Filament\Resources\ProcessResource\Pages;
 use App\Filament\Resources\ProcessResource\RelationManagers;
 use App\Models\Process;
 use Filament\Forms;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -24,10 +27,42 @@ class ProcessResource extends Resource
     {
         return $form
             ->schema([
-                //echo Form::select('size', array('L' => 'Large', 'S' => 'Small'));
+            //echo Form::select('size', array('L' => 'Large', 'S' => 'Small'));
+            Forms\Components\Section::make('Process')
+            ->schema([
                 Select::make('process')->options([
-                    'is_active' => 'Active',
-                    'is_open' => 'Open',
+                        'Template1' => 'Template1',
+                        'Template2' => 'Template2',
+                    ])
+                    ->live(),
+                    Placeholder::make('title')
+                    ->content(function(Get $get){
+                        return $get('process');
+                    }),
+                    Placeholder::make('date')
+                    ->content(function(Get $get){
+                        return $get('process');
+                    }),                    
+                    Placeholder::make('active')
+                    ->content(function(Get $get){
+                        return $get('process');
+                    }), 
+                    Placeholder::make('creator')
+                    ->content(function(Get $get){
+                        return $get('process');
+                    }), 
+                    Placeholder::make('responsible')
+                    ->content(function(Get $get){
+                        return $get('process');
+                    }), 
+                    Placeholder::make('represented')
+                    ->content(function(Get $get){
+                        return $get('process');
+                    }), 
+                    Placeholder::make('last updated')
+                    ->content(function(Get $get){
+                        return $get('process');
+                    }), 
                 ]),
             ]);
     }
