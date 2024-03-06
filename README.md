@@ -30,6 +30,8 @@ E.g. `Add login page #21`
 
 => php install => create Autoload
 
+=>
+
 ## Setting Up Project
 
 1. php install
@@ -37,3 +39,12 @@ E.g. `Add login page #21`
 2. create .env file and copy schematic
 
 3. php artisan serve / start docker for DB
+## Filament Forms
+
+1. Create Ressource => php artisan make:filament-ressource --generate name (gross geschrieben)
+
+2. in function form copy schematic (inputs etc.)
+
+3. in function table copy schematics for the view of data created by form from step 2
+
+4. tipp: getPages function is to create, view or edit datas
