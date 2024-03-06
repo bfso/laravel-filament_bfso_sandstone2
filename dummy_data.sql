@@ -7,13 +7,13 @@
 --     department INT
 -- );
 
-INSERT INTO users (firstname, lastname, email, password, department) VALUES
-('John', 'Doe', 'john.doe@example.com', 'password123', 1),
-('Jane', 'Smith', 'jane.smith@example.com', 'letmein', 2),
-('Michael', 'Johnson', 'michael.johnson@example.com', 'securepass', 3),
-('Emily', 'Brown', 'emily.brown@example.com', 'password123', 1),
-('David', 'Davis', 'david.davis@example.com', 'p@ssw0rd', 2),
-('Sarah', 'Wilson', 'sarah.wilson@example.com', 'qwerty', 3);
+INSERT INTO users (name, email, password, department) VALUES
+( 'Doe', 'john.doe@example.com', 'password123', 1),
+( 'Smith', 'jane.smith@example.com', 'letmein', 2),
+( 'Johnson', 'michael.johnson@example.com', 'securepass', 3),
+( 'Brown', 'emily.brown@example.com', 'password123', 1),
+( 'Davis', 'david.davis@example.com', 'p@ssw0rd', 2),
+( 'Wilson', 'sarah.wilson@example.com', 'qwerty', 3);
 
 
 
