@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'email'=>'admin@bfo.ch',
             'name'=>'admin@bfo.ch',
             'password'=>Hash::make('bfo12345'),
-            'department'=>1,
+            //'department'=>1,
         ]);
     }
 }
