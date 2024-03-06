@@ -19,8 +19,11 @@ E.g. `feature/#21-add-login-page`
 
 E.g. `Add login page #21`
 ## Start Docker
+
 => Start Docker Daemon
+
 => CTRL + SHIFT + P => Rebuild Container
 ## Laravel Cheatsheet
 => php artisan serve => start server
+
 => php artisan migrate => migrate DB changes / migrate whole DB
