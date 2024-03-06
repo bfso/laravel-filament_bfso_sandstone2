@@ -27,3 +27,13 @@ E.g. `Add login page #21`
 => php artisan serve => start server
 
 => php artisan migrate => migrate DB changes / migrate whole DB
+
+=> php install => create Autoload
+
+## Setting Up Project
+
+1. php install
+
+2. create .env file and copy schematic
+
+3. php artisan serve / start docker for DB
