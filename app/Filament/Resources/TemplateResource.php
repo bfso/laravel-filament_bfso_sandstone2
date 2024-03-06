@@ -28,18 +28,11 @@ class TemplateResource extends Resource
     {
         return $form
         ->schema([
-            Forms\Components\Select::make('product_id')
-                ->relationship('product','title_de')
-                ->required(),
-            Forms\Components\TextInput::make('general_rating')
-                ->required()
-                ->numeric()
-                // Live is needed when changes should be watched
-                ->live(),
-            Forms\Components\TextInput::make('teacher_rating')
-                ->required()
-                ->numeric()
-             
+            Forms\Components\TextInput::make('title')->required()->name('Titel'),
+            Forms\Components\TextInput::make('creator')->required()->name('Ersteller'),
+            Forms\Components\TextInput::make('responsible')->required()->name('Verantwortlich'),
+            Forms\Components\TextInput::make('represented')->required()->name('Vertreten durch'),
+            Forms\Components\Checkbox::make('is_active')->name('Aktiv?')
         ]);
     }
 
