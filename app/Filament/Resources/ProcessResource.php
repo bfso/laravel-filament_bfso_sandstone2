@@ -34,14 +34,9 @@ class ProcessResource extends Resource
                     Select::make('process')->label(__('Template'))->required()->searchable()
                     ->options(Template::orderBy('id', 'asc')->pluck('title', 'id')->toArray())
                     ->live(),
-                ])->columns(4),
-                        Placeholder::make('title')
-                        ->content(function(Get $get){
-                            return $get('process');
-                        }),
                     Placeholder::make('date')
                     ->content(function(Get $get){
-                        return $get('process');
+                        return Template::find($get('process'))->date;
                     }),                    
                     Placeholder::make('active')
                     ->content(function(Get $get){
@@ -62,9 +57,25 @@ class ProcessResource extends Resource
                     Placeholder::make('last updated')
                     ->content(function(Get $get){
                         return $get('process');
-                    }), 
-                ]);            
+                    }),                     
+                ])->columns(4),
+
+            ]);            
     }
+
+    // Forms\Components\Section::make('Process')
+    // ->schema(function (Get $get, Pages\EditUser $livewire, Model ?$record): array {
+    //     # If the page is Edit and the record exists, then get type_id and use it in the match()
+    //     # and for creating a page it will work as expected.
+    //     $type_id = ( $livewire instanceof Pages\EditUser && $record ) ? $record->type_id : $get('type_id');
+
+    //     return match ($type_id) {
+    //         default => [],
+    //         '1' => [ProductDataContactLensForm::make('cldata')->columns(4)],
+    //         '3' => [ProductDataSunGlassForm::make('sgdata')->columns(4)],
+    //         '5' => [ProductDataSpectacleFrameForm::make('sfdata')->columns(4)],
+    //     }
+    // }),
 
     public static function table(Table $table): Table
     {
@@ -96,7 +107,7 @@ class ProcessResource extends Resource
     {
         return [
             'index' => Pages\ListProcesses::route('/'),
-            'create' => Pages\CreateProcess::route('/create'),
+            'start' => Pages\CreateProcess::route('/create'),
             'edit' => Pages\EditProcess::route('/{record}/edit'),
         ];
     }
