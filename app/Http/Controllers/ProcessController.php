@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\process;
+use App\Models\Process;
 use Illuminate\Http\Request;
 
 class ProcessController extends Controller
