@@ -26,11 +26,11 @@ E.g. `Add login page #21`
 ## Laravel Cheatsheet
 => php artisan serve => start server
 
-=> php artisan migrate => migrate DB changes / migrate whole DB
 
 => php install => create Autoload
 
-=>
+=> php artisan make:migration => php artisan migrate => migrate DB changes / migrate whole DB
+=> php artisan make:model => add $fillable variable for insert/read data => return in a function $this->belongsTo(TableUWantDataFrom::class)
 
 ## Setting Up Project
 
