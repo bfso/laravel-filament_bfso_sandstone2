@@ -4,6 +4,7 @@ namespace Database\Seeders;
 use Illuminate\Support\Facades\Hash;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\user;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
