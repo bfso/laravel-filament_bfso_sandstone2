@@ -16,7 +16,9 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Foundation\Auth\User;
 
 class ProcessResource extends Resource
 {
@@ -27,41 +29,64 @@ class ProcessResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+            /*->schema([
                 //echo Form::select('size', array('L' => 'Large', 'S' => 'Small'));
-                Forms\Components\Section::make('Process')
+                Forms\Components\Section::make('Process')*/
                 ->schema([
                     Select::make('process')->label(__('Template'))->required()->searchable()
-                    ->options(Template::orderBy('id', 'asc')->pluck('title', 'id')->toArray())
-                    ->live(),
+                        ->options(Template::orderBy('id', 'asc')->pluck('title', 'id')->toArray())
+                        ->live(),
                     Placeholder::make('date')
                     ->content(function(Get $get){
-                        //return Template::find($get('process'))->date;
-                        return $get('date');
+                        $processid = intval($get('process'));
+                        if ($processid != 0){
+                            return Template::find($processid)->date;
+                        }
+                        return '' ;
                     }),                    
                     Placeholder::make('active')
                     ->content(function(Get $get){
-                        return $get('process');
+                        $processid = intval($get('process'));
+                        if ($processid != 0){
+                            return Template::find($processid)->is_active;
+                        }
+                        return '' ;
                     }), 
                     Placeholder::make('creator')
                     ->content(function(Get $get){
-                        return $get('process');
+                        $processid = intval($get('process'));
+                        if ($processid != 0){
+                            return Template::find($processid)->creator_user->name;
+                        }
+                        return '' ;
                     }), 
                     Placeholder::make('responsible')
                     ->content(function(Get $get){
-                        return $get('process');
+                        $processid = intval($get('process'));
+                        if ($processid != 0){
+                            return Template::find($processid)->responsible_user->name;
+                        }
+                        return '' ;
                     }), 
                     Placeholder::make('represented')
                     ->content(function(Get $get){
-                        return $get('process');
+                        $processid = intval($get('process'));
+                        if ($processid != 0){
+                            return Template::find($processid)->represented_user->name;
+                        }
+                        return '' ;
                     }), 
-                    Placeholder::make('last updated')
+                    Placeholder::make('last updated by')
                     ->content(function(Get $get){
-                        return $get('process');
+                        $processid = intval($get('process'));
+                        if ($processid != 0){
+                            return Template::find($processid)->last_update_by_user->name;
+                        }
+                        return '' ;
                     }),                     
-                ])->columns(4),
+                ])->columns(4);
 
-            ]);            
+           /* ]); */           
     }
 
     // Forms\Components\Section::make('Process')

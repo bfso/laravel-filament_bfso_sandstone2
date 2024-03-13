@@ -9,27 +9,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Template extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'title',
-        'creator',
-        'responsible',
-        'represented',
-        'last_update_by',
-        'is_active',
-        'date',        
-    ];
 
-    public function creator(){
-        return $this->belongsTo(User::class,'creator','id');
-    }
-    public function responsible(){
-        return $this->belongsTo(User::class,'responsible','id');
-    }
-    public function represented(){
-        return $this->belongsTo(User::class,'represented','id');
+    //write an methode to insert dat in table process
+    public function insertData($data){
+        $this->name = $data['name'];
+        $this->email = $data['email'];
+        $this->password = $data['password'];
+        $this->save();
+        return 1;
     }
 
 
+
+    protected $fillable =['title','creator', 'responsible', 'represented', 'is_active', 'last_update_by'];
 
     public function creator_user(): BelongsTo {
         return $this->belongsTo(User::class, 'creator' , 'id');
