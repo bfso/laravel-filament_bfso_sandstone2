@@ -28,7 +28,7 @@ class RequestResource extends Resource
             ->schema([
                 TextInput::make('title'),
                 TextInput::make('description'),
-                TextInput::make('user_id')->placeholder(auth()->user()->name ?? auth()->user()->email)->disabled()
+                //TextInput::make('user_id')->placeholder(auth()->user()->name ?? auth()->user()->email)->disabled()
             ]);
     }
 
