@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('templates', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('creator');
-            $table->string('responsible');
-            $table->string('represented');
-            $table->string('last_update_by');
+            $table->foreignId('last_update_by')->references('id')->on('users');
+            $table->foreignId('creator')->references('id')->on('users');
+            $table->foreignId('responsible')->references('id')->on('users');
+            $table->foreignId('represented')->references('id')->on('users');
             $table->boolean('is_active')->default(true);
             $table->timestamp('date')->nullable();
             $table->timestamps();
