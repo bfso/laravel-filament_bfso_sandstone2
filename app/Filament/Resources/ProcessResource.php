@@ -3,20 +3,15 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProcessResource\Pages;
-use App\Filament\Resources\ProcessResource\RelationManagers;
 use App\Models\Process;
-use Filament\Actions\Action;
-use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\ColorColumn;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
 
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ProcessResource extends Resource
 {
@@ -43,38 +38,34 @@ class ProcessResource extends Resource
                 
                TextColumn::make('title')->label('Title')->searchable(),
                 TextColumn::make('status')->label('Status')->sortable(),
+                TextColumn::make('status')->label('Status')->sortable(),
                 
-
-            ])
-            ->filters([
                 
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                TextColumn::make('title')
-                // ->actions([
-                //     Action::make('nextStep')
-                //         ->requiresConfirmation()
-                //         ->action(function (Process $record): void {
-                //             // Your logic to update the status here
-                //             // Assuming that 'status' is an enum field
-                //             // $currentStatus = $record->status;
-                //             // $enumValues = ['is_active', 'is_open', 'is_processing', 'is_late', 'is_successful'];
+                ])
+                ->filters([
+                    
+                    ])
+                    ->actions([
+                        Action::make('next status')->action(function (Process $record): void {
+                            // Your logic to update the status here
+                            // Assuming that 'status' is an enum field
+                             $currentStatus = $record->status;
+                             $enumValues = ['is_active', 'is_open', 'is_processing', 'is_late', 'is_successful'];
                         
-                //             // Get the index of the current status in the enum values
-                //             // $currentIndex = array_search($currentStatus, $enumValues);
+                            // Get the index of the current status in the enum values
+                             $currentIndex = array_search($currentStatus, $enumValues);
                         
-                //             // Get the next status, or wrap around to the first if it's the last one
-                //             // $nextIndex = ($currentIndex + 1) % count($enumValues);
-                //             // $nextStatus = Arr::get($enumValues, $nextIndex);
+                            // Get the next status, or wrap around to the first if it's the last one
+                            $nextIndex = ($currentIndex + 1) % count($enumValues);
+                            $nextStatus = $enumValues[$nextIndex];
                         
-                //             // Update the record with the next status
-                //             // $record->update(['status' => $nextStatus]);
+                            // Update the record with the next status
+                             $record->update(['status' => $nextStatus]);
                             
-                //             // Example confirmation message
-                //             $this->notify('Status updated successfully.');
-                //         }),
-              //  ])
+                            }),
+                            Tables\Actions\EditAction::make(),
+                        // CreateAction::make('')->successNotificationTitle('User registered')
+        
              
             ])
             ->bulkActions([
