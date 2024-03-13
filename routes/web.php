@@ -24,4 +24,3 @@ Route::get('/', function () {
 
 //Route::get('/template', [ControllerTemplate::class, 'form']);
 
-Route::get('/template', 'App\Http\Controllers\ControllerTemplate@show_form');

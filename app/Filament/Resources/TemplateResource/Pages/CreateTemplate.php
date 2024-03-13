@@ -15,4 +15,17 @@ class CreateTemplate extends CreateRecord
 
         return $data;
     }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\CreateAction::make()
+ 
+        ];
+    }
+
+    protected function getRedirectUrl(): string {
+        return static::getResource()::getUrl('index');
+    }
+
 }
