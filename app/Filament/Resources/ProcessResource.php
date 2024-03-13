@@ -36,7 +36,8 @@ class ProcessResource extends Resource
                     ->live(),
                     Placeholder::make('date')
                     ->content(function(Get $get){
-                        return Template::find($get('process'))->date;
+                        //return Template::find($get('process'))->date;
+                        return $get('date');
                     }),                    
                     Placeholder::make('active')
                     ->content(function(Get $get){
