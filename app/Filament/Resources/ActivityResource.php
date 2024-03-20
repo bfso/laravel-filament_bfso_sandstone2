@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ActivityResource\Pages;
 use App\Filament\Resources\ActivityResource\RelationManagers;
 use App\Models\Activity;
+use App\Models\deparment;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -28,6 +29,9 @@ class ActivityResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $currentActivityId = Activity::getModel()->id;
+        $options = Activity::where('responsible_id', '!=', $currentActivityId) // Aktivitäten ausschließen, bei denen der Benutzer der Verantwortliche ist
+                   ->pluck('title', 'id');
         return $form
     ->schema([
         TextInput::make('title')->required()->label('Titel'),
@@ -42,21 +46,15 @@ class ActivityResource extends Resource
             ->searchable(),
         Select::make('department')
             ->label('Abteilung')
-            ->options([
-                'Sekretariat' => 'Sekretariat',
-                'IT' => 'IT',
-                'Qualitätssicherung' => 'Qualitätssicherung',
-                'Finanzen' => 'Finanzen',
-                // Fügen Sie hier weitere Abteilungen hinzu, falls erforderlich
-            ]),
+            ->options(deparment::all()->pluck('name', 'id')),
         TextInput::make('offset')->label('Offset'),
         Select::make('predecessor_id')
             ->label('Vorgänger')
-            ->options(Activity::all()->pluck('title', 'id'))
+            ->options($options)
             ->searchable(),
         Select::make('successor_id')
             ->label('Nachfolger')
-            ->options(Activity::all()->pluck('title', 'id'))
+            ->options($options)
             ->searchable(),
         TextInput::make('categories')->label('Kategorien'),
         Checkbox::make('completed')->label('Tätigkeit als erledigt markieren'),

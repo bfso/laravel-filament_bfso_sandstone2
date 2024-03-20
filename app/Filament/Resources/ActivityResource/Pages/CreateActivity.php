@@ -12,7 +12,7 @@ class CreateActivity extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['number'] = '1.01 ';
+        $data['number'] = '1.02 ';
 
         return $data;
     }
