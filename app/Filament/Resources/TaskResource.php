@@ -29,8 +29,19 @@ class TaskResource extends Resource
                 TextInput::make('title'),
                 TextInput::make('description'),
                 Select::make('user_id')
-                ->relationship(name: 'user', titleAttribute: 'name')
-               
+                ->relationship(name: 'user', titleAttribute: 'name'),
+                Select::make('process')
+                ->options([
+                    'draft' => 'Draft',
+                    'reviewing' => 'Reviewing',
+                    'published' => 'Published',
+                ]),
+                Select::make('priority')
+                ->options([
+                    'prioHigh' => 'High Prio',
+                    'reviewing' => 'Mid Prio',
+                    'published' => 'Low Prio',
+                ]),
             ]);
     }
 
