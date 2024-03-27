@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('represented')->references('id')->on('users');
 
             $table->integer('department')->references('id')->on('departments');
-            $table->integer('categorie')->references('id')->on('categories');
+            $table->integer('category')->references('id')->on('categories');
             $table->integer('offset_days');
             $table->enum('status',['is_active', 'is_open','is_processing','is_late','is_successful']);
             $table->integer('last_updated_by')->references('id')->on('users');

@@ -46,7 +46,7 @@ INSERT INTO categories (name) VALUES
 
 --processes
 
-INSERT INTO processes (title, creator, responsible, represented, department, categorie, offset_days, status, last_updated_by, is_active, next, previous, parent, date) VALUES
+INSERT INTO processes (title, creator, responsible, represented, department, category, offset_days, status, last_updated_by, is_active, next, previous, parent, date) VALUES
 ('Process 1', 1, 2, 3, 4, 1, 10, 'Pending', 3, TRUE, 2, NULL, NULL, '2024-02-07'),
 ('Process 2', 2, 3, 4, 5, 2, 15, 'In Progress', 4, TRUE, 3, 1, NULL, '2024-02-07'),
 ('Process 3', 3, 4, 5, 1, 3, 20, 'Completed', 5, FALSE, 4, 2, NULL, '2024-02-07'),
