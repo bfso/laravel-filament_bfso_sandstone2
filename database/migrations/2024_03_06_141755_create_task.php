@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function ($table) {
-
-
-            $table->integer('department_id')->references('id')->on('departments');
-
+        Schema::create('tasks', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->string('priority');
+            $table->string('process');
+            $table->timestamps();
         });
     }
 
@@ -24,9 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function ($table) {
-
-            $table->dropColumn('department');
-        });
+        //
     }
 };

@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerTemplate;
 use Filament\Http\Controllers\CreateRecord;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +20,3 @@ use Filament\Http\Controllers\CreateRecord;
 Route::get('/', function () {
     return view('welcome');
 });
-
-//Route::get('/template', [ControllerTemplate::class, 'form']);
-
-Route::get('/template', 'App\Http\Controllers\ControllerTemplate@show_form');
