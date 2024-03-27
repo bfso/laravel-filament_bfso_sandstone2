@@ -19,7 +19,7 @@ jobs:
         php-version: '8.2'
     - uses: actions/checkout@v3
     - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      run: php -r "file_exists('.env.serve') || copy('.env.example', '.env.serve');"
 
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
@@ -41,5 +41,5 @@ jobs:
     #     DB_DATABASE: database/database.sqlite
     #   run: vendor/bin/phpunit
 
-    - name: E2E tests
+    - name: Unit tests
       run: php artisan test
