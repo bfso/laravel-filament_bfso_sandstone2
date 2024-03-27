@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::table('users', function ($table) {
 
+
+            $table->integer('department_id')->references('id')->on('departments');
+
         });
     }
 
