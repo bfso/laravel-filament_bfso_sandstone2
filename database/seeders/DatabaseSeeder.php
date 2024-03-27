@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\deparment::create([
+        \App\Models\Department::create([
             'name' => 'asdf'
         ]);
 
