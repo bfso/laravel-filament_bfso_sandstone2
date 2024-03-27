@@ -34,7 +34,7 @@ class DepartmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(department $department)
+    public function show(Department $Department)
     {
         //
     }
@@ -42,7 +42,7 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(department $department)
+    public function edit(Department $Department)
     {
         //
     }
@@ -50,7 +50,7 @@ class DepartmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, department $department)
+    public function update(Request $request, Department $Department)
     {
         //
     }
@@ -58,7 +58,7 @@ class DepartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(department $department)
+    public function destroy(Department $Department)
     {
         //
     }

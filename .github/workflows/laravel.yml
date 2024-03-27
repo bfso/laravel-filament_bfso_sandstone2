@@ -41,5 +41,5 @@ jobs:
     #     DB_DATABASE: database/database.sqlite
     #   run: vendor/bin/phpunit
 
-    - name: E2E tests
+    - name: Unit tests
       run: php artisan test

@@ -19,8 +19,7 @@
 			"extensions": [
 				"cweijan.vscode-mysql-client2",
 				"esbenp.prettier-vscode",
-				"GitHub.copilot",
-				"GitHub.vscode-pull-request-github"
+				"GitHub.copilot"
 			]
 		}
 	}
