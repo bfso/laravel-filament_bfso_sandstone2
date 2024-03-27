@@ -32,8 +32,8 @@ class UserResource extends Resource
             ->schema([
                 TextInput::make('name')->label("Name")->required()->maxLength(255),
                 TextInput::make('email')->label("Email")->email()->autocomplete(false)->required()->maxLength(255),
-                TextInput::make('password')->label("Password")->password()->revealable()->autocomplete(false)->required()->maxLength(255),
-                TextInput::make('password_repeat')->label("Repeat password")->password()->same('password')->required(),
+                TextInput::make('password_confirmation')->label("Password")->password()->revealable()->autocomplete(false)->required(fn (string $operation): bool => $operation === 'create')->maxLength(255)->nullable(),
+                TextInput::make('password')->label("Repeat password")->password()->required(fn (string $operation): bool => $operation === 'create')->confirmed()->nullable(),
                 Select::make('department_id')->options(Department::all()->pluck('name', 'id'))->label("Department")->searchable()->required(),
             ]);
     }
@@ -44,7 +44,7 @@ class UserResource extends Resource
             ->columns([
                 TextColumn::make('name')->weight(FontWeight::Bold)->label("Name")->searchable()->sortable(),
                 TextColumn::make('email')->label("Email")->icon('heroicon-m-envelope')->copyable()->copyMessage('Email address copied')->copyMessageDuration(1500)->searchable()->sortable(),
-                TextColumn::make('department.name')->icon('heroicon-m-building-office-2'),
+                TextColumn::make('department.name')->icon('heroicon-m-building-office'),
                 TextColumn::make('created_at')->label("Created")->dateTime()->sortable(),
             ])
             ->filters([
