@@ -1,7 +1,10 @@
 <?php
 
+use App\Filament\Resources\TemplateResource;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\TaskForm;
+use App\Http\Controllers\ControllerTemplate;
+use Filament\Http\Controllers\CreateRecord;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +20,3 @@ use App\Livewire\TaskForm;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/task', TaskForm::class);
